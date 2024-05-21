@@ -3,4 +3,4 @@ This is my attempt at replicating a QSOR (Quantitative Structure-Odor Relationsh
 
 ## Acknowledgements
 * [This paper](https://arxiv.org/pdf/1910.10685) is the basis for the model
-* Both the goodscents and dravniek's datasets are available from the [Pyrfume archive](https://github.com/pyrfume/pyrfume-data)
+* Both datasets are from the [Pyrfume archive](https://github.com/pyrfume/pyrfume-data)
