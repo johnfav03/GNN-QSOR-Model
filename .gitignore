@@ -1,2 +1,3 @@
 venv
-gcn_model_81.68.pth
+__pycache__
+*.pth
