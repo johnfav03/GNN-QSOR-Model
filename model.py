@@ -2,12 +2,14 @@ import torch
 import torch.nn.functional as F
 from torch_geometric.nn import GCNConv, global_add_pool
 from torch.nn import BatchNorm1d, Dropout, Linear, SELU, ReLU
+from torch_geometric.utils import add_self_loops, scatter
 
 class GCN(torch.nn.Module):
     def __init__(self):
         super(GCN, self).__init__()
         # model specifications as per table 8 in <https://arxiv.org/pdf/1910.10685>
-        input_channels = 1
+        input_channels = 11
+        # 152 cols in dravnieks, 146 output features - unsure where 138 came from in research paper
         output_channels = 146
         pool_dim = 175
         hidden_channels = [15, 20, 27, 36]
@@ -26,7 +28,7 @@ class GCN(torch.nn.Module):
         self.read4 = torch.nn.Linear(hidden_channels[3], pool_dim)
         
         # Fully Connected Layers
-        self.fc1 = Linear(hidden_channels[3], fc_channels[0])
+        self.fc1 = Linear(pool_dim, fc_channels[0])
         self.fc2 = Linear(fc_channels[0], fc_channels[1])
         
         # BatchNorm Layers
@@ -88,6 +90,12 @@ class GCN(torch.nn.Module):
         # Prediction Layer
         x = self.prediction(x)
         x = torch.sigmoid(x)
-        x = torch.softmax(x, dim=1)
         
+        return x
+
+    @staticmethod
+    def max_graph_pool(x, edge_index):
+        edge_index, _ = add_self_loops(edge_index)
+        row, col = edge_index
+        x = scatter(x[row], col, dim=0, reduce="max")
         return x
