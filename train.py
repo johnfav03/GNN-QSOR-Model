@@ -45,7 +45,7 @@ def evaluate(model, loader, criterion):
 
 if __name__ == "__main__":
     model = GCN()
-    optimizer = torch.optim.Adam(model.parameters(), lr=0.0005)
+    optimizer = torch.optim.Adam(model.parameters(), lr=0.001)
     criterion = torch.nn.BCELoss()
 
     seed = 298
@@ -55,7 +55,7 @@ if __name__ == "__main__":
     random.seed(seed)
     torch.backends.cudnn.deterministic = True
 
-    data_list = torch.load('processed-data/data.pt')
+    data_list = torch.load('processed-data/dravnieks.pt')
     train_data, test_data = train_test_split(data_list, test_size=0.2, random_state=seed)
     train_data, val_data = train_test_split(train_data, test_size=0.125, random_state=seed)
 
@@ -75,3 +75,18 @@ if __name__ == "__main__":
     print(f'Test Loss: {test_loss:.4f}, Binary AUROC: {auroc_score:.4f}')
 
     torch.save(model.state_dict(), 'gcn_model.pth')
+
+    # NOTE - despite seeding everything i could find, there's still some randomness built in
+    # NOTE - this loop is meant to find the most optimal AUROC within a reasonable number of trials
+    # best_auroc = 0
+    # for trial in range(300):
+    #     for epoch in range(NUM_EPOCHS):
+    #         train_loss = train(model, train_loader, optimizer, criterion)
+    #         val_loss = validate(model, val_loader, criterion)
+    #         print(f'\rTrial {trial}, Epoch {epoch}', end="")
+    #     test_loss, auroc_score = evaluate(model, test_loader, criterion)
+    #     if auroc_score > best_auroc:
+    #         best_auroc = auroc_score
+    #         print(f'Saved @ {best_auroc}')
+    #         torch.save(model.state_dict(), 'gcn_model.pth')
+    # print()

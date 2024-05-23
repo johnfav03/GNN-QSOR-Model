@@ -21,6 +21,13 @@ def process_goodscents():
     """
 
     final_df = psql.sqldf(query, locals())
+    final_df['Descriptors'] = final_df['Descriptors'].str.split(';')
+    final_df['Descriptors'] = final_df['Descriptors'].apply(lambda x: x if x is not None else [])
+    all_descriptors = set(sum(final_df['Descriptors'].tolist(), []))
+    for descriptor in all_descriptors:
+        final_df[descriptor] = final_df['Descriptors'].apply(lambda x: 1 if descriptor in x else 0)
+
+    final_df = final_df.drop(columns=['Descriptors'])
     return final_df
 
 def process_dravnieks():
@@ -38,9 +45,11 @@ def process_dravnieks():
     final_df = result_df.merge(behavior, on='Stimulus')
     return final_df
 
-def convert_to_graph(df):
+def convert_to_graph(file, df):
     result = []
+    targets = df.columns[6:].values
     for i in range(len(df)):
+        print(f"\r{i} / {len(df)}", end='')
         row = df.iloc[i]
         smile = row["IsomericSMILES"]
         name = row["IUPACName"]
@@ -70,11 +79,13 @@ def convert_to_graph(df):
         perm = (edge_idx[0] * mol.GetNumAtoms() + edge_idx[1]).argsort()
         edge_idx = edge_idx[:, perm]
 
-        x = F.one_hot(torch.tensor(atomic_idxs), num_classes=len(ATOM_TYPES)).to(torch.float)
+        x = F.one_hot(torch.tensor(atomic_idxs).long(), num_classes=len(ATOM_TYPES)).to(torch.float)
         adtl = torch.tensor([atomic_nums, atomic_mass, atomic_aroma], dtype=torch.float).t().contiguous()
         x = torch.cat([x, adtl], dim=-1)
+
+        if edge_idx.numel() == 0 or edge_idx.max() >= len(x):
+            continue
         
-        targets = df.columns[6:].values
         for t in targets:
             df[t] = df[t].to_numpy() / df[t].to_numpy().max()
             df[t] = df[t].apply(lambda x: 1 if x >= 0.5 else 0)
@@ -89,11 +100,15 @@ def convert_to_graph(df):
 
         result.append(data)
 
-    torch.save(result, "processed-data/data.pt")
+    torch.save(result, file)
+    print("")
 
 if __name__ == "__main__":
-    goodscents = process_goodscents()
-    dravnieks = process_dravnieks()
+    # goodscents = process_goodscents()
+    # dravnieks = process_dravnieks()
+    goodscents = pd.read_csv('processed-data/goodscents.csv')
+    dravnieks = pd.read_csv('processed-data/dravnieks.csv')
     goodscents.to_csv('processed-data/goodscents.csv', index=False)
     dravnieks.to_csv('processed-data/dravnieks.csv', index=False)
-    convert_to_graph(dravnieks)
+    convert_to_graph("processed-data/goodscents.pt", goodscents)
+    convert_to_graph("processed-data/dravnieks.pt", goodscents)
