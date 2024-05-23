@@ -45,7 +45,7 @@ def evaluate(model, loader, criterion):
 
 if __name__ == "__main__":
     model = GCN()
-    optimizer = torch.optim.Adam(model.parameters(), lr=0.001)
+    optimizer = torch.optim.Adam(model.parameters(), lr=0.0005)
     criterion = torch.nn.BCELoss()
 
     seed = 298
