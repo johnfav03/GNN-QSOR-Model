@@ -9,7 +9,8 @@ class GCN(torch.nn.Module):
         super(GCN, self).__init__()
         # model specifications as per table 8 in <https://arxiv.org/pdf/1910.10685>
         input_channels = 11
-        # 152 cols in dravnieks, 146 output features - unsure where 138 came from in research paper
+        # 152 cols in dravnieks, 146 output features
+        # paper only lists 138 output features, eventually normalize?
         output_channels = 146
         pool_dim = 175
         hidden_channels = [15, 20, 27, 36]
