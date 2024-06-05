@@ -22,10 +22,10 @@ jobs:
             aws-region: us-east-1
 
         - name: Upload dravnieks model to S3
-          run: aws s3 saved-models/dravnieks_model.pth s3://qsor-gcn-models/dravnieks_model.pth
+          run: aws s3 mv saved-models/dravnieks_model.pth s3://qsor-gcn-models/dravnieks_model.pth
 
         - name: Upload goodscents model to S3
-          run: aws s3 saved-models/goodscents_model.pth s3://qsor-gcn-models/goodscents_model.pth
+          run: aws s3 mv saved-models/goodscents_model.pth s3://qsor-gcn-models/goodscents_model.pth
 
         - name: Upload leffingwells model to S3
-          run: aws s3 saved-models/leffingwells_model.pth s3://qsor-gcn-models/leffingwells_model.pth
+          run: aws s3 mv saved-models/leffingwells_model.pth s3://qsor-gcn-models/leffingwells_model.pth
