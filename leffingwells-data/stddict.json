@@ -1,0 +1,416 @@
+{
+    "alcoholic": [
+        "alcoholic"
+    ],
+    "aldehydic": [
+        "aldehydic"
+    ],
+    "alliaceous": [
+        "alliaceous"
+    ],
+    "almond": [
+        "almond"
+    ],
+    "amber": [
+        "amber"
+    ],
+    "animal": [
+        "animal"
+    ],
+    "anisic": [
+        "anisic"
+    ],
+    "apple": [
+        "apple"
+    ],
+    "apricot": [
+        "apricot"
+    ],
+    "aromatic": [
+        "aromatic"
+    ],
+    "balsamic": [
+        "balsamic"
+    ],
+    "banana": [
+        "banana"
+    ],
+    "beefy": [
+        "beefy"
+    ],
+    "bergamot": [
+        "bergamot"
+    ],
+    "berry": [
+        "berry"
+    ],
+    "bitter": [
+        "bitter"
+    ],
+    "black currant": [
+        "black currant"
+    ],
+    "brandy": [
+        "brandy"
+    ],
+    "burnt": [
+        "burnt"
+    ],
+    "buttery": [
+        "buttery"
+    ],
+    "cabbage": [
+        "cabbage"
+    ],
+    "camphoreous": [
+        "camphoreous"
+    ],
+    "caramellic": [
+        "caramellic"
+    ],
+    "cedar": [
+        "cedar"
+    ],
+    "celery": [
+        "celery"
+    ],
+    "chamomile": [
+        "chamomile"
+    ],
+    "cheesy": [
+        "cheesy"
+    ],
+    "cherry": [
+        "cherry"
+    ],
+    "chocolate": [
+        "chocolate"
+    ],
+    "cinnamon": [
+        "cinnamon"
+    ],
+    "citrus": [
+        "citrus"
+    ],
+    "clean": [
+        "clean"
+    ],
+    "clove": [
+        "clove"
+    ],
+    "cocoa": [
+        "cocoa"
+    ],
+    "coconut": [
+        "coconut"
+    ],
+    "coffee": [
+        "coffee"
+    ],
+    "cognac": [
+        "cognac"
+    ],
+    "cooked": [
+        "cooked"
+    ],
+    "cooling": [
+        "cooling"
+    ],
+    "cortex": [
+        "cortex"
+    ],
+    "coumarinic": [
+        "coumarinic"
+    ],
+    "creamy": [
+        "creamy"
+    ],
+    "cucumber": [
+        "cucumber"
+    ],
+    "dairy": [
+        "dairy"
+    ],
+    "dry": [
+        "dry"
+    ],
+    "earthy": [
+        "earthy"
+    ],
+    "ethereal": [
+        "ethereal"
+    ],
+    "fatty": [
+        "fatty"
+    ],
+    "fermented": [
+        "fermented"
+    ],
+    "fishy": [
+        "fishy"
+    ],
+    "floral": [
+        "floral"
+    ],
+    "fresh": [
+        "fresh"
+    ],
+    "fruit skin": [
+        "fruit skin"
+    ],
+    "fruity": [
+        "fruity"
+    ],
+    "garlic": [
+        "garlic"
+    ],
+    "gassy": [
+        "gassy"
+    ],
+    "geranium": [
+        "geranium"
+    ],
+    "grape": [
+        "grape"
+    ],
+    "grapefruit": [
+        "grapefruit"
+    ],
+    "grassy": [
+        "grassy"
+    ],
+    "green": [
+        "green"
+    ],
+    "hawthorn": [
+        "hawthorn"
+    ],
+    "hay": [
+        "hay"
+    ],
+    "hazelnut": [
+        "hazelnut"
+    ],
+    "herbal": [
+        "herbal"
+    ],
+    "honey": [
+        "honey"
+    ],
+    "hyacinth": [
+        "hyacinth"
+    ],
+    "jasmine": [
+        "jasmine"
+    ],
+    "juicy": [
+        "juicy"
+    ],
+    "ketonic": [
+        "ketonic"
+    ],
+    "lactonic": [
+        "lactonic"
+    ],
+    "lavender": [
+        "lavender"
+    ],
+    "leafy": [
+        "leafy"
+    ],
+    "leathery": [
+        "leathery"
+    ],
+    "lemon": [
+        "lemon"
+    ],
+    "lily": [
+        "lily"
+    ],
+    "malty": [
+        "malty"
+    ],
+    "meaty": [
+        "meaty"
+    ],
+    "medicinal": [
+        "medicinal"
+    ],
+    "melon": [
+        "melon"
+    ],
+    "metallic": [
+        "metallic"
+    ],
+    "milky": [
+        "milky"
+    ],
+    "mint": [
+        "mint"
+    ],
+    "muguet": [
+        "muguet"
+    ],
+    "mushroom": [
+        "mushroom"
+    ],
+    "musk": [
+        "musk"
+    ],
+    "musty": [
+        "musty"
+    ],
+    "natural": [
+        "natural"
+    ],
+    "nutty": [
+        "nutty"
+    ],
+    "odorless": [
+        "odorless"
+    ],
+    "oily": [
+        "oily"
+    ],
+    "onion": [
+        "onion"
+    ],
+    "orange": [
+        "orange"
+    ],
+    "orangeflower": [
+        "orangeflower"
+    ],
+    "orris": [
+        "orris"
+    ],
+    "ozone": [
+        "ozone"
+    ],
+    "peach": [
+        "peach"
+    ],
+    "pear": [
+        "pear"
+    ],
+    "phenolic": [
+        "phenolic"
+    ],
+    "pine": [
+        "pine"
+    ],
+    "pineapple": [
+        "pineapple"
+    ],
+    "plum": [
+        "plum"
+    ],
+    "popcorn": [
+        "popcorn"
+    ],
+    "potato": [
+        "potato"
+    ],
+    "powdery": [
+        "powdery"
+    ],
+    "pungent": [
+        "pungent"
+    ],
+    "radish": [
+        "radish"
+    ],
+    "raspberry": [
+        "raspberry"
+    ],
+    "ripe": [
+        "ripe"
+    ],
+    "roasted": [
+        "roasted"
+    ],
+    "rose": [
+        "rose"
+    ],
+    "rummy": [
+        "rummy"
+    ],
+    "sandalwood": [
+        "sandalwood"
+    ],
+    "savory": [
+        "savory"
+    ],
+    "sharp": [
+        "sharp"
+    ],
+    "smokey": [
+        "smokey"
+    ],
+    "soapy": [
+        "soapy"
+    ],
+    "solvent": [
+        "solvent"
+    ],
+    "sour": [
+        "sour"
+    ],
+    "spicy": [
+        "spicy"
+    ],
+    "strawberry": [
+        "strawberry"
+    ],
+    "sulfurous": [
+        "sulfurous"
+    ],
+    "sweaty": [
+        "sweaty"
+    ],
+    "sweet": [
+        "sweet"
+    ],
+    "tea": [
+        "tea"
+    ],
+    "terpenic": [
+        "terpenic"
+    ],
+    "tobacco": [
+        "tobacco"
+    ],
+    "tomato": [
+        "tomato"
+    ],
+    "tropical": [
+        "tropical"
+    ],
+    "vanilla": [
+        "vanilla"
+    ],
+    "vegetable": [
+        "vegetable"
+    ],
+    "vetiver": [
+        "vetiver"
+    ],
+    "violet": [
+        "violet"
+    ],
+    "warm": [
+        "warm"
+    ],
+    "waxy": [
+        "waxy"
+    ],
+    "weedy": [
+        "weedy"
+    ],
+    "winey": [
+        "winey"
+    ],
+    "woody": [
+        "woody"
+    ]
+}

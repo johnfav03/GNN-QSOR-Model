@@ -12,7 +12,7 @@ class GCN(torch.nn.Module):
         # 152 cols in dravnieks, 146 output features
         # paper only lists 138 output features, eventually normalize?
         # output_channels = 146 dravnieks value
-        output_channels = 666
+        output_channels = 138
         pool_dim = 175
         hidden_channels = [15, 20, 27, 36]
         fc_channels = [96, 63]

@@ -5,6 +5,9 @@ from model import GCN
 import numpy as np
 import random
 from torchmetrics.functional.classification import auroc
+import warnings
+
+warnings.simplefilter('ignore')
 
 NUM_EPOCHS = 300
 
@@ -23,7 +26,9 @@ def train(model, loader, optimizer, criterion):
 def validate(model, loader, criterion):
     model.eval()
     total_loss = 0
+    cnt = 0
     for data in loader:
+        cnt += 1
         with torch.no_grad():
             out = model(data.x, data.edge_index, data.batch)
             loss = criterion(out.float(), data.y.float())
@@ -33,29 +38,33 @@ def validate(model, loader, criterion):
 def evaluate(model, loader, criterion):
     model.eval()
     total_loss = 0
-    auroc_score = 0
+    bin_auroc_score = 0
+    mlt_auroc_score = 0
     for data in loader:
         with torch.no_grad():
             out = model(data.x, data.edge_index, data.batch)
             loss = 0
             loss = criterion(out.float(), data.y.float())
             total_loss += loss.item()
-            auroc_score = auroc(out, data.y, task='binary', num_classes=146)
-    return total_loss / len(loader), auroc_score
+            bin_auroc_score = auroc(out, data.y, task='binary', num_classes=138)
+            mlt_auroc_score = auroc(out, data.y, task='multilabel', num_labels=138)
+    return total_loss / len(loader), bin_auroc_score, mlt_auroc_score
 
 if __name__ == "__main__":
+    dataset = "leffingwells"
+
     model = GCN()
     optimizer = torch.optim.Adam(model.parameters(), lr=0.001)
     criterion = torch.nn.BCELoss()
 
-    seed = 298
+    seed = 498
     torch.manual_seed(seed)
     torch.cuda.manual_seed(seed)
     np.random.seed(seed)
     random.seed(seed)
     torch.backends.cudnn.deterministic = True
 
-    data_list = torch.load('processed-data/dravnieks.pt')
+    data_list = torch.load('processed-data/{}.pt'.format(dataset))
     train_data, test_data = train_test_split(data_list, test_size=0.2, random_state=seed)
     train_data, val_data = train_test_split(train_data, test_size=0.125, random_state=seed)
 
@@ -71,10 +80,10 @@ if __name__ == "__main__":
         val_loss = validate(model, val_loader, criterion)
         print(f'Epoch {epoch+1:03d}, Train Loss: {train_loss:.4f}, Val Loss: {val_loss:.4f}')
 
-    test_loss, auroc_score = evaluate(model, test_loader, criterion)
-    print(f'Test Loss: {test_loss:.4f}, Binary AUROC: {auroc_score:.4f}')
+    test_loss, bin_auroc_score, mlt_auroc_score = evaluate(model, test_loader, criterion)
+    print(f'Test Loss: {test_loss:.4f}, Binary AUROC: {bin_auroc_score:.4f}, AUROC: {mlt_auroc_score:.4f}')
 
-    torch.save(model.state_dict(), 'gcn_model.pth')
+    torch.save(model.state_dict(), 'saved-models/{}_model.pth'.format(dataset))
 
     # NOTE - despite seeding everything i could find, there's still some randomness built in
     # NOTE - this loop is meant to find the most optimal AUROC within a reasonable number of trials
