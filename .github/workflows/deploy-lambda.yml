@@ -35,7 +35,7 @@ jobs:
           run: |
             aws lambda update-function-code \
               --function-name fargate-manager \
-              --zip-file fileb://lambda.zip"
+              --zip-file fileb://lambda.zip
 
 
 
