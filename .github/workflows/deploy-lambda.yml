@@ -1,0 +1,52 @@
+name: Deploy Lambda
+
+on:
+    push:
+        branches:
+            - main
+
+env:
+    SAM_TEMPLATE: infrastructure/lambdas/template.yaml
+    ARTIFACTS_BUCKET: qsor-lambda-artifacts
+    AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY }}
+    AWS_SECRET_ACCES_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+    AWS_REGION: us-east-1
+
+jobs:
+    upload_model_to_s3:
+        name: Deploy Lambda
+        runs-on: ubuntu-latest
+
+        steps:
+        - name: Checkout code
+          uses: actions/checkout@v2
+
+        - name: Install zipper
+          uses: montudor/action-zip@v1
+        
+        - name: Zip lambda
+          run: zip -r lambda.zip infrastructure/lambdas/manage-fargate/
+  
+        - name: Aws cli
+          uses: inehedi/actions-awscli-v2@latest
+          with:
+            args: "lambda update-function-code \
+                --function-name fargate-manager \
+                --zip-file fileb://lambda.zip"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

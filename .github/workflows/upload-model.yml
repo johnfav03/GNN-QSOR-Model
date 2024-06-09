@@ -29,3 +29,28 @@ jobs:
 
         - name: Upload leffingwells model to S3
           run: aws s3 mv saved-models/leffingwells_model.pth s3://qsor-gcn-models/leffingwells_model.pth
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          

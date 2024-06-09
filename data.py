@@ -193,30 +193,15 @@ def convert_to_graph(file, df):
     print("")
 
 if __name__ == "__main__":
-    # gs = "goodscents-data/stddict.json"
-    # dn = "dravnieks-data/stddict.json"
-    # gs_data = {}
-    # dn_data = {}
-    # with open(gs, 'r') as file:
-    #     gs_data = json.load(file)
-    # with open(dn, 'r') as file:
-    #     dn_data = json.load(file)
-    # with open(gs, 'w') as file:
-    #     pretty_json_str = pprint.pformat(gs_data, compact=True, width=500).replace("'",'"')
-    #     file.write(pretty_json_str)
-    # with open(dn, 'w') as file:
-    #     pretty_json_str = pprint.pformat(dn_data, compact=True, width=500).replace("'",'"')
-    #     file.write(pretty_json_str)
-
-    # goodscents = process_goodscents()
-    # dravnieks = process_dravnieks()
+    goodscents = process_goodscents()
+    dravnieks = process_dravnieks()
     leffingwells = process_leffingwells()
-    # goodscents.to_csv('processed-data/goodscents.csv', index=False)
-    # dravnieks.to_csv('processed-data/dravnieks.csv', index=False)
+    goodscents.to_csv('processed-data/goodscents.csv', index=False)
+    dravnieks.to_csv('processed-data/dravnieks.csv', index=False)
     leffingwells.to_csv('processed-data/leffingwells.csv', index=False)
     # goodscents = pd.read_csv('processed-data/goodscents.csv')
     # dravnieks = pd.read_csv('processed-data/dravnieks.csv')
     # leffingwells = pd.read_csv('processed-data/leffingwells.csv')
-    # convert_to_graph("processed-data/goodscents.pt", goodscents)
-    # convert_to_graph("processed-data/dravnieks.pt", dravnieks)
-    # convert_to_graph("processed-data/leffingwells.pt", leffingwells)
+    convert_to_graph("processed-data/goodscents.pt", goodscents)
+    convert_to_graph("processed-data/dravnieks.pt", dravnieks)
+    convert_to_graph("processed-data/leffingwells.pt", leffingwells)
